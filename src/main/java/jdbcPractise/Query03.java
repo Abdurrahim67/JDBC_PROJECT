@@ -11,7 +11,7 @@ public class Query03 {
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed",
                 "postgres",
                 "12345");
-        Statement st = con.createStatement();
+    //Statement st = con.createStatement();
 
         PreparedStatement ps=con.prepareStatement("select * from ogrenciler");
         ResultSet rs=ps.executeQuery();
@@ -19,10 +19,10 @@ public class Query03 {
         ResultSetMetaData rsmd=rs.getMetaData();
 
         System.out.println(rsmd.getColumnCount());
-        rsmd.getCatalogName(1);
-        rsmd.getCatalogName(2);
-        rsmd.getCatalogName(3);
-        rsmd.getCatalogName(4);
+        rsmd.getColumnName(1);
+        rsmd.getColumnName(2);
+        rsmd.getColumnName(3);
+        rsmd.getColumnName(4);
 
         System.out.println("1.Sutunun Data Tipi"+rsmd.getColumnTypeName(1));
         System.out.println("2.Sutunun Data Tipi"+rsmd.getColumnTypeName(2));
@@ -33,7 +33,7 @@ public class Query03 {
 
 
         con.close();
-        st.close();
+        ps.close();
         rs.close();
 
     }
